@@ -13,11 +13,9 @@ function showError(input, message) {
 }
 
 //Show input success message
-function showSuccess(input, message) {
+function showSuccess(input) {
     const formControl = input.parentElement;
     formControl.className = "form-control success";
-
-
 }
 
 // Check required fields
