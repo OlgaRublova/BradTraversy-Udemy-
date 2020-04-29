@@ -20,7 +20,7 @@ function updateSelectedCount() {
     const seatsIndex = [...selectedSeats].map((seat) => [...seats].indexOf(seat));
     localStorage.setItem('selectedSeats', JSON.stringify(seatsIndex));
 
-    const selectedSeatsCount = selectedSeats.length;
+    const selectedSeatsCount = selectedSeats.length;//get the length of the Nodelist
     count.innerText = selectedSeatsCount;
     total.innerText = selectedSeatsCount * ticketPrice;
 }
@@ -30,7 +30,7 @@ function populateUI() {
     const selectedSeats = JSON.parse(localStorage.getItem('selectedSeats'));
     if (selectedSeats !== null && selectedSeats.length > 0) {
         seats.forEach((seat, index) => {
-            if (selectedSeats.indexOf(index) > -1) {
+            if (selectedSeats.indexOf(index) > -1) { // -1 means it's not there, so > -1 means it's there
                 seat.classList.add('selected');
             }
         });
@@ -43,7 +43,7 @@ function populateUI() {
 
 //Movie select event
 movieSelect.addEventListener('change', (e) => {
-    ticketPrice = +e.target.value;
+    ticketPrice = +e.target.value;//+ converts the string into a number
     setMovieData(e.target.selectedIndex, e.target.value);
     updateSelectedCount();
 })
